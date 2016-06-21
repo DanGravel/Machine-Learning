@@ -56,5 +56,8 @@ def showImg(image):
 	plt.show()
 
 def classifyImg(image, network):
+	if image.size != (28,28):
+		print("Image must be 28x28")
+		return
 	image = imread("image", flatten = True)
 	return network.predict(image.ravel())
