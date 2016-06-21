@@ -6,12 +6,8 @@ import gzip
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from skimage.io import imread
-from PIL import Image
 
-def showImg(image):
-	plt.imshow(image , cmap= cm.binary)
-	plt.show()
-
+#TODO implement cross validation to determine if overfitting is occuring
 def loadData():
 	with gzip.open('mnist.pkl.gz', 'rb') as f:
 		data = pickle.load(f , encoding = 'latin1')
@@ -34,7 +30,9 @@ def loadData():
 	return {'X_train':X_train, 'X_val':X_val, 'X_test':X_test,
 			'y_train':y_train, 'y_val':y_val, 'y_test':y_test}
 
-
+"""
+Accuracy is about 95%
+"""
 def trainNetwork():
 	loadedData = loadData()
 	target = loadedData["y_train"]
@@ -48,12 +46,10 @@ def trainNetwork():
 
 	clf = RandomForestClassifier(n_estimators = 10, n_jobs = 2)
 	clf = clf.fit(features, target)
-	print(clf.score(test, loadedData["y_test"]))
+	return clf
+	#print(clf.score(test, loadedData["y_test"]))
 
 
-
-trainNetwork()
-
-
-
-
+def showImg(image):
+	plt.imshow(image , cmap= cm.binary)
+	plt.show()
