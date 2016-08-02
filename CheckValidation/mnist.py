@@ -4,14 +4,16 @@ import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import gzip
 import numpy as np
+import cv2
 from sklearn.ensemble import RandomForestClassifier
 from skimage.io import imread
+from sklearn.metrics import accuracy_score
 
 #TODO implement cross validation to determine if overfitting is occuring
 def loadData():
 	with gzip.open('mnist.pkl.gz', 'rb') as f:
-		data = pickle.load(f , encoding = 'latin1')
-	
+		data = pickle.load(f)
+
 	#Data is stored in tuple in 3 lists
 	X_train, y_train = data[0]
 	X_validation, y_validation = data[1]
@@ -23,7 +25,7 @@ def loadData():
 	X_test  = X_test.reshape((-1,1,28,28))
 
 	#Set the y values to unsigned integers(uint8)
-	y_train = y_train.astype(np.uint8) 
+	y_train = y_train.astype(np.uint8)
 	y_validation   = y_validation.astype(np.uint8)
 	y_test  = y_test.astype(np.uint8)
 
@@ -34,12 +36,12 @@ def loadData():
 Accuracy is about 95%
 """
 def trainNetwork():
-	trainData = loadData()
-	
-	target = trainData["y_train"]
+	loadedData = loadData()
+
+	target = loadedData["y_train"]
 	features = []
 	test = []
-	
+
 	#unrolls the 2d matrix to a vecor to be used as inputs for classifier
 	for i in range(loadedData["y_train"].size):
 		features.append(loadedData["X_train"][i][0].ravel())
@@ -48,7 +50,10 @@ def trainNetwork():
 
 	clf = RandomForestClassifier(n_estimators = 10, n_jobs = 2)
 	clf = clf.fit(features, target)
-	
+
+	predicted = clf.predict(test)
+	print(accuracy_score(loadedData["y_test"],predicted))
+
 	return clf
 
 def showImg(image):
@@ -56,8 +61,19 @@ def showImg(image):
 	plt.show()
 
 def classifyImg(image, network):
-	if image.size != (28,28):
-		print("Image must be 28x28")
-		return
 	image = imread("image", flatten = True)
+	print(network.predict(image.ravel()))
+	print(network.predict_proba(image.ravel()))
 	return network.predict(image.ravel())
+
+load = loadData()
+img = cv2.imread(["X_test"][0][0])
+cv2.imshow('image',img)
+cv2.waitKey(0)
+
+"""
+net = trainNetwork()
+image = imread("eight.png", flatten = True)
+print(net.predict(image.reshape(1,-1)))
+print(net.predict_proba(image.reshape(1,-1)))
+"""
