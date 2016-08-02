@@ -1,2 +1,2 @@
 #Check Validation
-Project to us machine learning to validate information on checks.
+Project to use machine learning to validate information on checks.
