@@ -74,5 +74,5 @@ parser = argparse.ArgumentParser()
 parser.add_argument("image")
 args = parser.parse_args()
 img = args.image
-cv2.imwrite("perspectiveFix1.jpg",perspective_fix(img, corner_coords(img)))
+cv2.imshow("img",perspective_fix(img, corner_coords(img)))
 cv2.waitKey(0)
