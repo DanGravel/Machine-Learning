@@ -3,8 +3,8 @@
 The purpose of this project is to validate the cash amount written on a check and compare it to the user imputed amount.
  
 ## Neural Network 
-The dataset used to train the network was the MNIST hand written digit dataset. The set included 60 000 hand written numbers.  A RandomForestClassifier
-was used to classify the training images.  The overall accuracy was approximately 94%.
+The dataset used to train the network was the MNIST hand written digit dataset. The set included 60 000 hand written numbers.  The HOG features of each image was calculated and a LinearSVC was used to fit the data.
+
 
 ##Perspective Fix
 In order to get a clear birds eye view of the check the perspective needed to be fixed.
@@ -20,3 +20,4 @@ Below is a sample picture of a check before fixing the perspective
 
 Using the perspective_fix function the follwing image is obtained.
 ![alt tag](https://raw.githubusercontent.com/DanGravel/Machine-Learning/master/CheckValidation/Sample%20Images/Checks/perspectiveFix1.jpg)
+
