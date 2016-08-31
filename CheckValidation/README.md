@@ -16,7 +16,7 @@ From these points a transform matrix can be found and applied to the image to fi
 
 
 Below is a sample picture of a check before fixing the perspective.
-![alt tag](https://raw.githubusercontent.com/DanGravel/Machine-Learning/master/CheckValidation/Sample%20Images/Checks/check1.jpg)
+![alt tag](https://github.com/DanGravel/Machine-Learning/blob/master/CheckValidation/Sample%20Images/Checks/check1.jpg)
 
 Using the perspective_fix function the follwing image is obtained.
 ![alt tag](https://raw.githubusercontent.com/DanGravel/Machine-Learning/master/CheckValidation/Sample%20Images/Checks/perspectiveFix1.jpg)
@@ -45,7 +45,6 @@ Next the contours of the threshold image were found.  Contours that were very sm
 </p>
 
 Each image was resized to be 28x28, they were then passed to the classifier in neuralNet.py
-
 
 
 
