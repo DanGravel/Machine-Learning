@@ -45,7 +45,7 @@ Next the contours of the threshold image were found.  Contours that were very sm
 </p>
 
 Each image was resized to be 28x28, they were then passed to the classifier in neuralNet.py
-
+The result from the classifier was [7][7][7][7]. The last digit was incorrect, this could be due to artifacts in the image caused by neighboring numbers.  Another issue was detecting the decimal point.
 
 
 
