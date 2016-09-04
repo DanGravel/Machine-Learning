@@ -1,4 +1,4 @@
-#Check validation using neural networks
+#Check validation using machine learning
 
 The purpose of this project is to validate the cash amount written on a check and compare it to the user imputed amount.
  
