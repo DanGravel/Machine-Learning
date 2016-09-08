@@ -1,9 +1,9 @@
-#Check validation using neural networks
+#Check validation using machine learning
 
 The purpose of this project is to validate the cash amount written on a check and compare it to the user imputed amount.
  
-## Neural Network 
-The dataset used to train the network was the MNIST hand written digit dataset. The set included 60 000 hand written numbers.  The HOG features of each image was calculated and a LinearSVC was used to fit the data.
+## Classifier
+The dataset used to train the classifier was the MNIST hand written digit dataset. The set included 60 000 hand written numbers.  The HOG features of each image was calculated and a LinearSVC was used to fit the data.
 
 
 ##Perspective Fix
@@ -16,7 +16,7 @@ From these points a transform matrix can be found and applied to the image to fi
 
 
 Below is a sample picture of a check before fixing the perspective.
-![alt tag](https://raw.githubusercontent.com/DanGravel/Machine-Learning/master/CheckValidation/Sample%20Images/Checks/check1.jpg)
+![alt tag](https://github.com/DanGravel/Machine-Learning/blob/master/CheckValidation/Sample%20Images/Checks/check1.jpg)
 
 Using the perspective_fix function the follwing image is obtained.
 ![alt tag](https://raw.githubusercontent.com/DanGravel/Machine-Learning/master/CheckValidation/Sample%20Images/Checks/perspectiveFix1.jpg)
@@ -45,8 +45,7 @@ Next the contours of the threshold image were found.  Contours that were very sm
 </p>
 
 Each image was resized to be 28x28, they were then passed to the classifier in neuralNet.py
-
-
+The result from the classifier was [7][7][7][7]. The last digit was incorrect, this could be due to artifacts in the image caused by neighboring numbers.  Another issue was detecting the decimal point.
 
 
 
